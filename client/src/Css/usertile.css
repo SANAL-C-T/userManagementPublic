@@ -1,0 +1,66 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.userTile {
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr auto auto;
+  align-items: center;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.userProfile img {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.editBtn button, .deleteBtn button {
+  width: 75px;
+  padding: 5px;
+  color: #fff;
+  background-color: #1c721b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 5px;
+}
+
+.editBtn button:hover, .deleteBtn button:hover {
+  background-color: #05f641;
+  color: #000000;
+}
+.deleteBtn button:hover {
+  background-color: #ff0011;
+  color: #fff;
+}
+
+.userName, .userPhone, .userEmail {
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+
+.editBtn, .deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noUser{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}

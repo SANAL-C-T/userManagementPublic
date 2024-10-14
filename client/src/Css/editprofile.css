@@ -1,0 +1,98 @@
+.container {
+    max-width: 600px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #ffa600;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  
+  .custom-file-input {
+    display: none;
+  }
+  
+  .custom-icon {
+    cursor: pointer;
+    color: #546a82;
+    transition: color 0.3s ease;
+  }
+  
+  .custom-icon:hover {
+    color: #65c47e;
+  }
+  
+  .imgsection {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .leftInput {
+    display: flex;
+    align-items: center;
+  }
+  
+  .rightInput {
+    margin-left: 20px;
+  }
+  
+
+  .rightInput img {
+    margin-left: 20px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .preview-image {
+    max-width: 100px;
+    border-radius: 50%;
+  }
+  
+  .savebutton {
+    background-color: #65c47e;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .savebutton:hover {
+    background-color: #68d888;
+  }
+  

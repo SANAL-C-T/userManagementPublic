@@ -1,0 +1,11 @@
+.footer {
+  background-color:rgb(9, 127, 189);
+  box-shadow: 1px 1px 6px 0px #343232;
+    height: 55px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  

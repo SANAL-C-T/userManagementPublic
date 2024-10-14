@@ -1,0 +1,40 @@
+.Homebody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa; 
+ 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  height: calc(100vh - 100px);
+
+}
+
+.left, .middle, .right {
+  flex: 1; 
+  margin: 0 10px; 
+}
+
+h2, h3, h4 {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+h3 {
+  border-bottom: 2px solid #007bff; 
+  padding-bottom: 5px;
+}
+
+.info {
+  color: #007bff; 
+  font-weight: 500; 
+}
+
+.profile-pic {
+  border-radius: 50%; 
+  width: 250px; 
+  height: 250px; 
+  object-fit: cover; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
