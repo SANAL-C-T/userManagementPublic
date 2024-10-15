@@ -17,15 +17,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads'));
 
-// const buildPath=path.join(_dirname,"../client/dist")
-// app.use(express.static(buildPath));
+const buildPath=path.join(_dirname,"../client/dist")
+app.use(express.static(buildPath));
 
 const urlRoutes=require("./router/router")
 app.use('/api', urlRoutes);
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(buildPath, 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(buildPath, 'index.html'));
+});
 
 app.listen(5000, () => {
   console.log("Server started on port 5000");
