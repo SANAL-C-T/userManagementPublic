@@ -1,19 +1,37 @@
-// store.js
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import signupReducer from '../features/SignUpSlice';
 import loginReducer from "../features/LoginSlice";
-import AdminReducer from "../features/AdminSlice"
+import AdminReducer from "../features/AdminSlice";
 
-
-const store = configureStore({
-  reducer: {
-    FromStoreSignUp: signupReducer,
-    FromStoreLogin: loginReducer,
-    FromStoreAdmin:AdminReducer
-  },
+// Combine the reducers
+const rootReducer = combineReducers({
+  FromStoreSignUp: signupReducer,
+  FromStoreLogin: loginReducer,
+  FromStoreAdmin: AdminReducer,
 });
 
-export default store;
-//this is the store which contian all the reducer function, these reducers update the respective state.
+// Persist configuration for redux-persist
+const persistConfig = {
+  key: "root",
+  storage,
+};
 
-//this store is connected to main.jsx. through providers.
+// Persist the combined reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// Create and configure the Redux store
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
+
+export default store;

@@ -7,9 +7,6 @@ const initialState = {
   loading: false,
   error: null,
   user: null,
-  token: localStorage.getItem('token'),
-  count: 0,
-
 };
 
 // User login action creator
@@ -19,6 +16,7 @@ export const ToUserLoginPage = createAsyncThunk(
     try {
       const response = await axios.post(`${backendPort}/api/login`, userInput);
       console.log("response.data::", response.data)
+     
       return response.data;
     } catch (error) {
       throw error.response.data;
@@ -92,9 +90,8 @@ const loginSlice = createSlice({
       .addCase(ToUserLoginPage.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
-        state.token = action.payload.token;
         state.error = null;
-        localStorage.setItem('token', action.payload.token);
+        
       })
       .addCase(ToUserLoginPage.rejected, (state, action) => {
         state.loading = false;

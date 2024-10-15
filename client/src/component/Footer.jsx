@@ -3,7 +3,7 @@ import "../Css/footer.css"
 const Footer = () => {
   return (
     <div className="footer">
-      <div>© 2024 SNL, all rights reserved
+      <div>© 2024 SnCT, all rights reserved
       </div>
     </div>
   );

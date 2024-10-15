@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "../Css/signup.css";
-import signupImage from "../../public/signUpGraphics.svg";
+import signupImage from "../../src/assets/signUpGraphics.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { tosignupUserpage } from "../features/SignUpSlice";
 

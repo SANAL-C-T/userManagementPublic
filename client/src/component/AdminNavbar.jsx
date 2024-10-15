@@ -3,14 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { logout } from "../features/LoginSlice"; 
 import { useDispatch } from "react-redux";
 const AdminNavbar = () => {
-
-
-  
   const navigate=useNavigate()
-
-
   const dispatch = useDispatch();
-
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");

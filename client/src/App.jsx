@@ -1,39 +1,74 @@
+// App.js
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import Homepage from "./pages/Homepage";
 import AdminHome from "./pages/AdminHomepage";
 import AdminCanEdit from "./pages/AdminCanEdit";
-import EditprofilePage from "./pages/EditProfilepage";
+import EditProfilePage from "./pages/EditProfilepage";
 import AdminCreateUser from "./pages/AdminCreateNewUser";
-import "./App.css";
-const App = () => {
+import ProtectedRoute from "./component/ProtectedRoute";
 
-  let token = localStorage.getItem('token');
-  if (token === null) {
-    token = null;
-  }
-  console.log("the token::", token);
+import "./App.css";
+
+const App = () => {
+  const token = localStorage.getItem("token");
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        {token ? (
-          <>
-            <Route path="/homepage" element={<Homepage />} />
-            <Route path="/editprofile" element={<EditprofilePage />} />
-            <Route path="/adminHome" element={<AdminHome />} />
-            <Route path="/adminEdit" element={<AdminCanEdit />} />
-            <Route path="/adminCreateUser" element={<AdminCreateUser />} />
-          </>
-        ) : (
-          <>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-          </>
-        )}
+        <Route
+          path="/"
+          element={!token ? <LoginPage /> : <Navigate to={"/homepage"} />}
+        />
+
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+     
+        <Route
+          path="/homepage"
+          element={
+            <ProtectedRoute>
+              <Homepage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/editprofile"
+          element={
+            <ProtectedRoute>
+              <EditProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/adminHome"
+          element={
+            <ProtectedRoute>
+              <AdminHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/adminEdit"
+          element={
+            <ProtectedRoute>
+              <AdminCanEdit />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/adminCreateUser"
+          element={
+            <ProtectedRoute>
+              <AdminCreateUser />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/homepage" />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
